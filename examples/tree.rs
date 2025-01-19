@@ -1,14 +1,14 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
 fn tree(gl: &mut QuadGl, time: f64, deep: u32, angle: f32, tall: f32) {
     if deep >= 8 {
         return;
     }
 
-    // we can use normal macroquad drawing API here
+    // we can use normal bevyquad drawing API here
     draw_rectangle(-0.01 / 2., 0., 0.01, tall, DARKGRAY);
 
-    // and we can also modify internal macroquad render state with "gl" reference
+    // and we can also modify internal bevyquad render state with "gl" reference
     gl.push_model_matrix(glam::Mat4::from_translation(glam::vec3(0., tall, 0.)));
 
     // right leaf
@@ -26,7 +26,7 @@ fn tree(gl: &mut QuadGl, time: f64, deep: u32, angle: f32, tall: f32) {
     gl.pop_model_matrix();
 }
 
-#[macroquad::main("Tree")]
+#[bevyquad::main("Tree")]
 async fn main() {
     let camera = Camera2D {
         zoom: vec2(1., 1.),

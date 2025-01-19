@@ -1,5 +1,6 @@
-use macroquad::prelude::*;
-use macroquad::window::miniquad::*;
+use bevy_ecs::component::Component;
+use bevyquad::prelude::*;
+use bevyquad::window::miniquad::*;
 use miniquad::graphics::RenderPass;
 
 #[cfg(feature = "nanoserde")]
@@ -263,7 +264,7 @@ impl EmissionShape {
                 let ro = rand::gen_range(0., radius * radius).sqrt();
                 let phi = rand::gen_range(0., std::f32::consts::PI * 2.);
 
-                macroquad::math::polar_to_cartesian(ro, phi)
+                bevyquad::math::polar_to_cartesian(ro, phi)
             }
         }
     }
@@ -507,6 +508,7 @@ struct CpuParticle {
     initial_size: f32,
 }
 
+#[derive(Component)]
 pub struct Emitter {
     pipeline: Pipeline,
     bindings: Bindings,
@@ -558,7 +560,7 @@ impl Emitter {
         );
 
         let shader = {
-            use macroquad::material::shaders::{preprocess_shader, PreprocessorConfig};
+            use bevyquad::material::shaders::{preprocess_shader, PreprocessorConfig};
 
             let config = PreprocessorConfig {
                 includes: vec![(

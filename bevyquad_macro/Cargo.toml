@@ -1,12 +1,12 @@
 [package]
-name = "macroquad_macro"
+name = "bevyquad_macro"
 version = "0.1.8"
 authors = ["not-fl3 <not.fl3@gmail.com>"]
 edition = "2018"
 license = "MIT/Apache-2.0"
-repository = "https://github.com/not-fl3/macroquad"
+repository = "https://github.com/not-fl3/bevyquad"
 description = """
-Proc macro for macroquad
+Proc macro for bevyquad
 """
 include = ["Cargo.toml", "src/", "README.md", "LICENSE-*"]
 

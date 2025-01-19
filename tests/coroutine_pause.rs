@@ -1,4 +1,4 @@
-use macroquad::{
+use bevyquad::{
     experimental::{
         coroutines::{start_coroutine, wait_seconds},
         scene,
@@ -6,7 +6,7 @@ use macroquad::{
     window::next_frame,
 };
 
-#[macroquad::test]
+#[bevyquad::test]
 async fn coroutine_execution_order() {
     start_coroutine(async move {
         println!("a");
@@ -19,7 +19,7 @@ async fn coroutine_execution_order() {
     next_frame().await;
 }
 
-#[macroquad::test]
+#[bevyquad::test]
 async fn coroutine_manual_poll() {
     struct Player {
         state: i32,
@@ -57,7 +57,7 @@ async fn coroutine_manual_poll() {
     assert_eq!(scene::get_node(player).state, 2);
 }
 
-#[macroquad::test]
+#[bevyquad::test]
 async fn coroutine_manual_poll_delay() {
     struct Player {
         state: i32,

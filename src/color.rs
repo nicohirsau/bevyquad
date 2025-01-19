@@ -1,10 +1,11 @@
 //! Color types and helpers.
 
+use bevy_ecs::component::Component;
 pub use colors::*;
 
 /// A color represented by 4 floats: red, green, blue and alpha.
 #[repr(C)]
-#[derive(Clone, Copy, Debug, Default, PartialEq)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Component)]
 pub struct Color {
     /// Red channel value from 0.0 to 1.0
     pub r: f32,
@@ -85,7 +86,7 @@ impl Color {
     /// # Example
     ///
     /// ```
-    /// use macroquad::prelude::*;
+    /// use bevyquad::prelude::*;
     ///
     /// let pink = Color::new(1.00, 0.43, 0.76, 1.00);
     /// assert_eq!(pink.r, 1.00);
@@ -117,7 +118,7 @@ impl Color {
     /// # Example
     ///
     /// ```
-    /// use macroquad::prelude::*;
+    /// use bevyquad::prelude::*;
     ///
     /// let light_blue = Color::from_hex(0x3CA7D5);
     /// assert_eq!(light_blue.r, 0.23529412);

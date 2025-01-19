@@ -1,10 +1,10 @@
-//! Macroquad expose all the logging macros.
+//! bevyquad expose all the logging macros.
 //! They will use browser console, android console or just stdout depending on the platform.
 //! Those macros are the recommended way to output debug traces and logs.
 
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("Logs")]
+#[bevyquad::main("Logs")]
 async fn main() {
     debug!("This is a debug message");
     info!("and info message");

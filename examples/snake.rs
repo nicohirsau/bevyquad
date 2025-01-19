@@ -1,4 +1,4 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
 use std::collections::LinkedList;
 
@@ -12,7 +12,7 @@ struct Snake {
     dir: Point,
 }
 
-#[macroquad::main("Snake")]
+#[bevyquad::main("Snake")]
 async fn main() {
     let mut snake = Snake {
         head: (0, 0),

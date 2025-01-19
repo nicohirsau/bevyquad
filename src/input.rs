@@ -6,6 +6,7 @@ use crate::get_context;
 use crate::prelude::screen_height;
 use crate::prelude::screen_width;
 use crate::Vec2;
+use bevy_ecs::component::Component;
 pub use miniquad::{KeyCode, MouseButton};
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -28,7 +29,7 @@ impl From<miniquad::TouchPhase> for TouchPhase {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Component)]
 pub struct Touch {
     pub id: u64,
     pub phase: TouchPhase,

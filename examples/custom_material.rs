@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-use macroquad::window::miniquad::*;
+use bevyquad::window::miniquad::*;
 
 const VERTEX: &str = r#"#version 100
 attribute vec3 position;
@@ -36,7 +36,7 @@ void main() {
     gl_FragColor = test_color[5] * texture2D(Texture, uv);
 }"#;
 
-#[macroquad::main("Shaders")]
+#[bevyquad::main("Shaders")]
 async fn main() {
     let pipeline_params = PipelineParams {
         color_blend: Some(BlendState::new(

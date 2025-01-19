@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("3D")]
+#[bevyquad::main("3D")]
 async fn main() {
     let rust_logo = load_texture("examples/rust.png").await.unwrap();
     let ferris = load_texture("examples/ferris.png").await.unwrap();

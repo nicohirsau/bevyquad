@@ -1,4 +1,4 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 // use glam::vec3;
 
 const MOVE_SPEED: f32 = 0.1;
@@ -6,7 +6,7 @@ const LOOK_SPEED: f32 = 0.1;
 
 fn conf() -> Conf {
     Conf {
-        window_title: String::from("Macroquad"),
+        window_title: String::from("bevyquad"),
         window_width: 1260,
         window_height: 768,
         fullscreen: false,
@@ -14,7 +14,7 @@ fn conf() -> Conf {
     }
 }
 
-#[macroquad::main(conf)]
+#[bevyquad::main(conf)]
 async fn main() {
     let mut x = 0.0;
     let mut switch = false;

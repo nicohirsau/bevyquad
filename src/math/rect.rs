@@ -1,7 +1,8 @@
+use bevy_ecs::component::Component;
 use glam::*;
 
 /// A 2D rectangle, defined by its top-left corner, width and height.
-#[derive(Clone, Copy, Debug, Default, PartialEq)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Component)]
 pub struct Rect {
     pub x: f32,
     pub y: f32,
@@ -119,7 +120,7 @@ impl Rect {
     }
 }
 
-#[derive(Clone, Copy, Debug, Default, PartialEq)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Component)]
 pub struct RectOffset {
     pub left: f32,
     pub right: f32,

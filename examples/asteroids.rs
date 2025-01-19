@@ -1,4 +1,4 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
 const SHIP_HEIGHT: f32 = 25.;
 const SHIP_BASE: f32 = 22.;
@@ -42,7 +42,7 @@ fn wrap_around(v: &Vec2) -> Vec2 {
     vr
 }
 
-#[macroquad::main("Asteroids")]
+#[bevyquad::main("Asteroids")]
 async fn main() {
     let mut ship = Ship {
         pos: Vec2::new(screen_width() / 2., screen_height() / 2.),

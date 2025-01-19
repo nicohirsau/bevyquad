@@ -7,6 +7,7 @@ use crate::{
     texture::RenderTarget,
     window::{screen_height, screen_width},
 };
+use bevy_ecs::component::Component;
 use glam::{vec2, vec3, Mat4, Vec2, Vec3};
 
 pub trait Camera {
@@ -16,7 +17,7 @@ pub trait Camera {
     fn viewport(&self) -> Option<(i32, i32, i32, i32)>;
 }
 
-#[derive(Debug)]
+#[derive(Debug, Component)]
 pub struct Camera2D {
     /// Rotation in degrees.
     pub rotation: f32,
@@ -167,7 +168,7 @@ pub enum Projection {
     Orthographics,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Component)]
 pub struct Camera3D {
     /// Camera position.
     pub position: Vec3,

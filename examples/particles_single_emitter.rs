@@ -1,8 +1,8 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-use macroquad_particles::{BlendMode, Curve, Emitter, EmitterConfig};
+use bevyquad_particles::{BlendMode, Curve, Emitter, EmitterConfig};
 
-#[macroquad::main("Fountain")]
+#[bevyquad::main("Fountain")]
 async fn main() {
     let mut emitter = Emitter::new(EmitterConfig {
         lifetime: 0.5,

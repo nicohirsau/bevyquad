@@ -1,13 +1,14 @@
 [package]
-name = "macroquad-particles"
+name = "bevyquad-particles"
 version = "0.2.2"
 authors = ["Fedor Logachev <not.fl3@gmail.com>"]
 edition = "2018"
 license = "MIT/Apache-2.0"
 description = """
-Visual effects editor based on macroquad and megaui.
+Visual effects editor based on bevyquad and megaui.
 """
 
 [dependencies]
-macroquad = { path = "../", version = "0.4.0", default-features = false }
+bevy_ecs = "0.14.1"
+bevyquad = { path = "../", version = "0.4.0", default-features = false }
 nanoserde = { version = "0.1", optional = true }

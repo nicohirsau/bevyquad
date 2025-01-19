@@ -1,11 +1,11 @@
-# macroquad
+# bevyquad
 
-[![Github Actions](https://github.com/not-fl3/macroquad/workflows/CI/badge.svg)](https://github.com/not-fl3/macroquad/actions?query=workflow%3A)
-[![Docs](https://docs.rs/macroquad/badge.svg?version=0.4.5)](https://docs.rs/macroquad/0.4.5/macroquad/index.html)
-[![Crates.io version](https://img.shields.io/crates/v/macroquad.svg)](https://crates.io/crates/macroquad)
+[![Github Actions](https://github.com/not-fl3/bevyquad/workflows/CI/badge.svg)](https://github.com/not-fl3/bevyquad/actions?query=workflow%3A)
+[![Docs](https://docs.rs/bevyquad/badge.svg?version=0.4.5)](https://docs.rs/bevyquad/0.4.5/bevyquad/index.html)
+[![Crates.io version](https://img.shields.io/crates/v/bevyquad.svg)](https://crates.io/crates/bevyquad)
 [![Discord chat](https://img.shields.io/discord/710177966440579103.svg?label=discord%20chat)](https://discord.gg/WfEp6ut)
 
-`macroquad` is a simple and easy to use game library for Rust programming language, heavily inspired by [raylib](https://github.com/raysan5/raylib).
+`bevyquad` is a simple and easy to use game library for Rust programming language, heavily inspired by [raylib](https://github.com/raysan5/raylib).
 
 ## Features
 
@@ -24,27 +24,27 @@
 
 ## Build Instructions
 
-### Setting Up a Macroquad Project
+### Setting Up a bevyquad Project
 
-Macroquad is a normal rust dependency, therefore an empty macroquad project may be created with:
+bevyquad is a normal rust dependency, therefore an empty bevyquad project may be created with:
 
 ```bash
 # Create empty cargo project
 cargo init --bin
 ```
 
-Add macroquad as a dependency to Cargo.toml:
+Add bevyquad as a dependency to Cargo.toml:
 ```toml
 
 [dependencies]
-macroquad = "0.4"
+bevyquad = "0.4"
 ```
 
-Put some macroquad code in `src/main.rs`:
+Put some bevyquad code in `src/main.rs`:
 ```rust
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("BasicShapes")]
+#[bevyquad::main("BasicShapes")]
 async fn main() {
     loop {
         clear_background(RED);
@@ -65,7 +65,7 @@ And to run it natively:
 cargo run
 ```
 
-For more examples take a look at [Macroquad examples folder](https://github.com/not-fl3/macroquad/tree/master/examples)
+For more examples take a look at [bevyquad examples folder](https://github.com/not-fl3/bevyquad/tree/master/examples)
 
 ### Linux
 
@@ -129,7 +129,7 @@ And then use the following .html to load it:
 
 <body>
     <canvas id="glcanvas" tabindex='1'></canvas>
-    <!-- Minified and statically hosted version of https://github.com/not-fl3/macroquad/blob/master/js/mq_js_bundle.js -->
+    <!-- Minified and statically hosted version of https://github.com/not-fl3/bevyquad/blob/master/js/mq_js_bundle.js -->
     <script src="https://not-fl3.github.io/miniquad-samples/mq_js_bundle.js"></script>
     <script>load("CRATENAME.wasm");</script> <!-- Your compiled wasm file -->
 </body>
@@ -178,11 +178,11 @@ xcrun simctl install booted MyGame.app/
 xcrun simctl launch booted com.mygame
 ```
 
-For details and instructions on provisioning for real iphone, check [https://macroquad.rs/articles/ios/](https://macroquad.rs/articles/ios/)
+For details and instructions on provisioning for real iphone, check [https://bevyquad.rs/articles/ios/](https://bevyquad.rs/articles/ios/)
 
 <details>
 <summary>Tips</summary>
-Adding the following snippet to your Cargo.toml ensures that all dependencies compile in release even in debug mode. In macroquad, this has the effect of making images load several times faster and your applications much more performant, while keeping compile times miraculously low.
+Adding the following snippet to your Cargo.toml ensures that all dependencies compile in release even in debug mode. In bevyquad, this has the effect of making images load several times faster and your applications much more performant, while keeping compile times miraculously low.
 
 ```toml
 [profile.dev.package.'*']
@@ -192,7 +192,7 @@ opt-level = 3
 
 ## async/await
 
-While macroquad attempts to use as few Rust-specific concepts as possible, `.await` in all examples looks a bit scary.
+While bevyquad attempts to use as few Rust-specific concepts as possible, `.await` in all examples looks a bit scary.
 Rust's `async/await` is used to solve just one problem - cross platform main loop organization.
 
 <details>
@@ -221,16 +221,16 @@ The C++ solution for that problem: https://kripken.github.io/blog/wasm/2019/07/1
 
 But in Rust we have async/await. Rust's `futures` are basically continuations - `future`'s stack may be stored into a variable to pause/resume execution of future's code at a later point.
 
-async/await support in macroquad comes without any external dependencies - no runtime, no executors and futures-rs is not involved. It's just a way to preserve `main`'s stack on WASM and keep the code cross platform without any WASM-specific main loop.
+async/await support in bevyquad comes without any external dependencies - no runtime, no executors and futures-rs is not involved. It's just a way to preserve `main`'s stack on WASM and keep the code cross platform without any WASM-specific main loop.
 </Details>
 
 ## Community
 
 - [Quads Discord server](https://discord.gg/WfEp6ut) - a place to chat with the library's devs and other community members.
-- [Awesome Quads](https://github.com/ozkriff/awesome-quads) - a curated list of links to miniquad/macroquad-related code & resources.
+- [Awesome Quads](https://github.com/ozkriff/awesome-quads) - a curated list of links to miniquad/bevyquad-related code & resources.
 
 # Platinum sponsors
 
-Macroquad is supported by:
+bevyquad is supported by:
 
 [SourceGear](https://www.sourcegear.com/)

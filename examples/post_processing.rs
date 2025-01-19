@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("Post processing")]
+#[bevyquad::main("Post processing")]
 async fn main() {
     let render_target = render_target(320, 150);
     render_target.texture.set_filter(FilterMode::Nearest);

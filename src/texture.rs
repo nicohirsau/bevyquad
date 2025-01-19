@@ -7,6 +7,7 @@ use crate::{
 
 pub use crate::quad_gl::FilterMode;
 use crate::quad_gl::{DrawMode, Vertex};
+use bevy_ecs::component::Component;
 use glam::{vec2, Vec2};
 use slotmap::{TextureIdSlotMap, TextureSlotId};
 use std::sync::Arc;
@@ -18,7 +19,7 @@ pub(crate) struct TextureSlotGuarded(pub TextureSlotId);
 
 #[derive(Debug, Clone, PartialEq)]
 pub(crate) enum TextureHandle {
-    // texture that belongs to macroquad and follows normal garbage collection rules
+    // texture that belongs to bevyquad and follows normal garbage collection rules
     Managed(Arc<TextureSlotGuarded>),
     ManagedWeak(TextureSlotId),
     // raw miniquad texture, there are no guarantees that this texture is not yet deleted
@@ -62,7 +63,7 @@ impl TexturesContext {
 }
 
 /// Image, data stored in CPU memory
-#[derive(Clone)]
+#[derive(Clone, Component)]
 pub struct Image {
     pub bytes: Vec<u8>,
     pub width: u16,
@@ -83,7 +84,7 @@ impl Image {
     /// Creates an empty Image.
     ///
     /// ```
-    /// # use macroquad::prelude::*;
+    /// # use bevyquad::prelude::*;
     /// let image = Image::empty();
     /// ```
     pub const fn empty() -> Image {
@@ -102,7 +103,7 @@ impl Image {
     /// # Example
     ///
     /// ```
-    /// # use macroquad::prelude::*;
+    /// # use bevyquad::prelude::*;
     /// let icon = Image::from_file_with_format(
     ///     include_bytes!("../examples/rust.png"),
     ///     Some(ImageFormat::Png),
@@ -381,7 +382,7 @@ impl Drop for RenderPass {
     }
 }
 
-#[derive(Clone, Debug)]
+#[derive(Clone, Debug, Component)]
 pub struct RenderTarget {
     pub texture: Texture2D,
     pub render_pass: RenderPass,
@@ -399,6 +400,17 @@ pub fn render_target_msaa(width: u32, height: u32) -> RenderTarget {
         height,
         RenderTargetParams {
             sample_count: 4,
+            ..Default::default()
+        },
+    )
+}
+
+pub fn render_target_nearest(width: u32, height: u32) -> RenderTarget {
+    render_target_ex(
+        width,
+        height,
+        RenderTargetParams {
+            sample_count: 1,
             ..Default::default()
         },
     )
@@ -624,7 +636,7 @@ pub fn get_screen_data() -> Image {
 }
 
 /// Texture, data stored in GPU memory
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Component)]
 pub struct Texture2D {
     pub(crate) texture: TextureHandle,
 }
@@ -657,8 +669,8 @@ impl Texture2D {
     ///
     /// # Example
     /// ```
-    /// # use macroquad::prelude::*;
-    /// # #[macroquad::main("test")]
+    /// # use bevyquad::prelude::*;
+    /// # #[bevyquad::main("test")]
     /// # async fn main() {
     /// let texture = Texture2D::empty();
     /// # }
@@ -676,8 +688,8 @@ impl Texture2D {
     ///
     /// # Example
     /// ```
-    /// # use macroquad::prelude::*;
-    /// # #[macroquad::main("test")]
+    /// # use bevyquad::prelude::*;
+    /// # #[bevyquad::main("test")]
     /// # async fn main() {
     /// let texture = Texture2D::from_file_with_format(
     ///     include_bytes!("../examples/rust.png"),
@@ -721,8 +733,8 @@ impl Texture2D {
     /// # Example
     ///
     /// ```
-    /// # use macroquad::prelude::*;
-    /// # #[macroquad::main("test")]
+    /// # use bevyquad::prelude::*;
+    /// # #[bevyquad::main("test")]
     /// # async fn main() {
     /// // Create a 2x2 texture from a byte slice with 4 rgba pixels
     /// let bytes: Vec<u8> = vec![255, 0, 0, 192, 0, 255, 0, 192, 0, 0, 255, 192, 255, 255, 255, 192];
@@ -813,8 +825,8 @@ impl Texture2D {
     ///
     /// # Example
     /// ```
-    /// # use macroquad::prelude::*;
-    /// # #[macroquad::main("test")]
+    /// # use bevyquad::prelude::*;
+    /// # #[bevyquad::main("test")]
     /// # async fn main() {
     /// let texture = Texture2D::empty();
     /// texture.set_filter(FilterMode::Linear);
@@ -935,7 +947,7 @@ pub fn build_textures_atlas() {
 }
 
 #[doc(hidden)]
-/// Macroquad do not have track of all loaded fonts.
+/// bevyquad do not have track of all loaded fonts.
 /// Fonts store their characters as ID's in the atlas.
 /// There fore resetting the atlas will render all fonts unusable.
 pub unsafe fn reset_textures_atlas() {

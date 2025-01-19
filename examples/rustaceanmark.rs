@@ -1,4 +1,4 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
 struct Rustaceane {
     pos: Vec2,
@@ -6,7 +6,7 @@ struct Rustaceane {
     color: Color,
 }
 
-#[macroquad::main("Rustaceanmark")]
+#[bevyquad::main("Rustaceanmark")]
 async fn main() {
     let mut rustaceanes: Vec<Rustaceane> = Vec::new();
     let rustacean_tex = load_texture("examples/rustacean_happy.png").await.unwrap();
@@ -15,10 +15,10 @@ async fn main() {
     loop {
         clear_background(Color::default());
 
-        if macroquad::input::is_mouse_button_down(MouseButton::Left) {
+        if bevyquad::input::is_mouse_button_down(MouseButton::Left) {
             for _i in 0..100 {
                 rustaceanes.push(Rustaceane {
-                    pos: Vec2::from(macroquad::input::mouse_position()),
+                    pos: Vec2::from(bevyquad::input::mouse_position()),
                     speed: Vec2::new(
                         rand::gen_range(-250., 250.) / 60.,
                         rand::gen_range(-250., 250.) / 60.,

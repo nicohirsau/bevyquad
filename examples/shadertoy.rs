@@ -1,11 +1,11 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-use macroquad::ui::{
+use bevyquad::ui::{
     hash, root_ui,
     widgets::{self, Label, TreeNode},
 };
 
-use macroquad::color;
+use bevyquad::color;
 
 enum Uniform {
     Float1(String),
@@ -43,7 +43,7 @@ fn color_picker_texture(w: usize, h: usize) -> (Texture2D, Image) {
     (Texture2D::from_image(&image), image)
 }
 
-#[macroquad::main("Shadertoy")]
+#[bevyquad::main("Shadertoy")]
 async fn main() {
     let ferris = load_texture("examples/rust.png").await.unwrap();
     let (color_picker_texture, color_picker_image) = color_picker_texture(200, 200);

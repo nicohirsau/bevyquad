@@ -1,6 +1,6 @@
-use macroquad::{audio, prelude::*, ui};
+use bevyquad::{audio, prelude::*, ui};
 
-#[macroquad::main("Audio")]
+#[bevyquad::main("Audio")]
 async fn main() {
     set_pc_assets_folder("examples");
 

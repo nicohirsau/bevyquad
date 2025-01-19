@@ -5,6 +5,8 @@
 use crate::{file::load_file, get_context, Error};
 use std::sync::Arc;
 
+use bevy_ecs::component::Component;
+
 #[cfg(feature = "audio")]
 use quad_snd::{AudioContext as QuadSndContext, Sound as QuadSndSound};
 
@@ -37,7 +39,7 @@ mod dummy_audio {
         }
 
         pub fn play(&self, _ctx: &mut AudioContext, _params: PlaySoundParams) {
-            eprintln!("warn: macroquad's \"audio\" feature disabled.");
+            eprintln!("warn: bevyquad's \"audio\" feature disabled.");
         }
 
         pub fn stop(&self, _ctx: &mut AudioContext) {}
@@ -93,7 +95,7 @@ impl Drop for QuadSndSoundGuarded {
     }
 }
 
-#[derive(Clone)]
+#[derive(Clone, Component)]
 pub struct Sound(Arc<QuadSndSoundGuarded>);
 
 impl std::fmt::Debug for Sound {

@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("BasicShapes")]
+#[bevyquad::main("BasicShapes")]
 async fn main() {
     loop {
         clear_background(LIGHTGRAY);

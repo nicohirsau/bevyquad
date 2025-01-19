@@ -11,6 +11,7 @@ use crate::{
 };
 
 use crate::color::WHITE;
+use bevy_ecs::{component::Component, system::Resource};
 use glam::vec2;
 
 use std::sync::{Arc, Mutex};
@@ -214,8 +215,8 @@ impl Font {
     ///
     /// # Example
     /// ```
-    /// # use macroquad::prelude::*;
-    /// # #[macroquad::main("test")]
+    /// # use bevyquad::prelude::*;
+    /// # #[bevyquad::main("test")]
     /// # async fn main() {
     /// let font = Font::default();
     /// font.set_filter(FilterMode::Linear);
@@ -233,7 +234,7 @@ impl Font {
 }
 
 /// Arguments for "draw_text_ex" function such as font, font_size etc
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Component, Resource)]
 pub struct TextParams<'a> {
     pub font: Option<&'a Font>,
     /// Base size for character height. The size in pixel used during font rasterizing.

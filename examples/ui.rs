@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-use macroquad::ui::{
+use bevyquad::ui::{
     hash, root_ui,
     widgets::{self, Group},
     Drag, Ui,
@@ -132,7 +132,7 @@ impl Data {
     }
 }
 
-#[macroquad::main("UI showcase")]
+#[bevyquad::main("UI showcase")]
 async fn main() {
     let mut data = Data::new();
 

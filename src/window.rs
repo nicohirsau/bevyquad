@@ -39,7 +39,7 @@ pub struct InternalGlContext<'a> {
 
 impl<'a> InternalGlContext<'a> {
     /// Draw all the batched stuff and reset the internal state cache
-    /// May be helpful for combining macroquad's drawing with raw miniquad/opengl calls
+    /// May be helpful for combining bevyquad's drawing with raw miniquad/opengl calls
     pub fn flush(&mut self) {
         get_context().perform_render_passes();
     }
@@ -71,7 +71,7 @@ pub fn screen_dpi_scale() -> f32 {
 
 /// Request the window size to be the given value. This takes DPI into account.
 ///
-/// Note that the OS might decide to give a different size. Additionally, the size in macroquad won't be updated until the next `next_frame().await`.
+/// Note that the OS might decide to give a different size. Additionally, the size in bevyquad won't be updated until the next `next_frame().await`.
 pub fn request_new_screen_size(width: f32, height: f32) {
     miniquad::window::set_window_size(
         (width * miniquad::window::dpi_scale()) as u32,
@@ -87,7 +87,7 @@ pub fn set_fullscreen(fullscreen: bool) {
     miniquad::window::set_fullscreen(fullscreen);
 }
 
-/// With `set_panic_handler` set to a handler code, macroquad will use
+/// With `set_panic_handler` set to a handler code, bevyquad will use
 /// `std::panic::catch_unwind` on user code to catch some panics.
 ///
 /// Sometimes it is nice to let player send a bug report with a screenshot of an
@@ -109,12 +109,12 @@ pub fn set_fullscreen(fullscreen: bool) {
 /// ```
 ///
 /// `set_panic_handler` acts as a second app entry-point, that will be used
-/// after a panic in user code will happen. Macroquad will also try to catch some OS
+/// after a panic in user code will happen. bevyquad will also try to catch some OS
 /// panics, but not all of them - some compatibility bugs may end up crashing the app.
 ///
-/// Withot `set_panic_handler` macroquad will not use `catch_unwind` at all,
+/// Withot `set_panic_handler` bevyquad will not use `catch_unwind` at all,
 /// therefore `panic_handler` is completely optional.
-/// NOTE: only with "backtrace" macroquad feature `backtrace` string will contain an
+/// NOTE: only with "backtrace" bevyquad feature `backtrace` string will contain an
 /// actual backtrace. Otherwise only panic location and message will be available.
 /// NOTE: on android, even with "backtrace" nice backtrace is available only if the game is compiled with sdk >= 21.
 /// To use sdk >= 21 add "min_sdk_version = 21" to Cargo.toml
@@ -128,7 +128,7 @@ where
         #[cfg(feature = "backtrace")]
         let backtrace_string = format!("{:?}", backtrace::Backtrace::new());
         #[cfg(not(feature = "backtrace"))]
-        let backtrace_string = format!("Macroquad compiled without \"backtrace\" feature");
+        let backtrace_string = format!("bevyquad compiled without \"backtrace\" feature");
         crate::logging::error!("{}", message);
         crate::logging::error!("{}", backtrace_string);
 

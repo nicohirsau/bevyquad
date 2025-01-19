@@ -1,4 +1,4 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
 fn short_angle_dist(a0: f32, a1: f32) -> f32 {
     let max = 360.0;
@@ -17,7 +17,7 @@ fn draw_cross(x: f32, y: f32, color: Color) {
     draw_line(x, y - size, x, y + size, thickness, color);
 }
 
-#[macroquad::main("Camera")]
+#[bevyquad::main("Camera")]
 async fn main() {
     let mut target = (0., 0.);
     let mut zoom = 1.0;

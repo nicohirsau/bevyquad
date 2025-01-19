@@ -1,4 +1,4 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 enum CellState {
@@ -6,7 +6,7 @@ enum CellState {
     Dead,
 }
 
-#[macroquad::main("Life")]
+#[bevyquad::main("Life")]
 async fn main() {
     let w = screen_width() as usize;
     let h = screen_height() as usize;

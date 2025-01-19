@@ -1,6 +1,6 @@
 use std::{future::Future, task::Poll};
 
-#[macroquad::test]
+#[bevyquad::test]
 async fn back_to_the_future() {
     struct Kaboom;
     impl Future for Kaboom {

@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("Arkanoid")]
+#[bevyquad::main("Arkanoid")]
 async fn main() {
     const BLOCKS_W: usize = 10;
     const BLOCKS_H: usize = 10;

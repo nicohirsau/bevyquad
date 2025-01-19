@@ -1,8 +1,8 @@
-use macroquad::ui::{hash, root_ui, widgets};
+use bevyquad::ui::{hash, root_ui, widgets};
 
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("Events")]
+#[bevyquad::main("Events")]
 async fn main() {
     loop {
         clear_background(WHITE);

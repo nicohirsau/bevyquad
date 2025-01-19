@@ -1,7 +1,7 @@
-use macroquad::prelude::*;
-use macroquad::ui::{hash, root_ui, widgets::Window};
+use bevyquad::prelude::*;
+use bevyquad::ui::{hash, root_ui, widgets::Window};
 
-#[macroquad::main("Exit dialog")]
+#[bevyquad::main("Exit dialog")]
 async fn main() {
     prevent_quit();
 

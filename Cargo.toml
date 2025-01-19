@@ -1,10 +1,10 @@
 [package]
-name = "macroquad"
+name = "bevyquad"
 version = "0.4.13"
 authors = ["not-fl3 <not.fl3@gmail.com>"]
 edition = "2021"
-homepage = "https://github.com/not-fl3/macroquad"
-repository = "https://github.com/not-fl3/macroquad"
+homepage = "https://github.com/not-fl3/bevyquad"
+repository = "https://github.com/not-fl3/bevyquad"
 description = """
 Simple and easy to use graphics library
 """
@@ -31,22 +31,24 @@ miniquad = { version = "=0.4.7", features = ["log-impl"] }
 quad-rand = "0.2.3"
 glam = { version = "0.27", features = ["scalar-math"] }
 image = { version = "0.24", default-features = false, features = ["png", "tga"] }
-macroquad_macro = { version = "0.1.8", path = "macroquad_macro" }
-fontdue = "0.9"
+bevyquad_macro = { version = "0.1.8", path = "bevyquad_macro" }
+fontdue = "0.7"
 backtrace = { version = "0.3.60", optional = true, default-features = false, features = [ "std", "libbacktrace" ] }
 log = { version = "0.4", optional = true }
 quad-snd = { version = "0.2", optional = true }
+slotmap = "1.0"
+bevy_ecs = "0.15.1"
 
 [dev-dependencies]
-macroquad-particles = { path = "./particles" }
-macroquad-tiled = { path = "./tiled" }
-macroquad-profiler = { path = "./profiler" }
-macroquad-platformer = { path = "./physics-platformer" }
+bevyquad-particles = { path = "./particles" }
+bevyquad-tiled = { path = "./tiled" }
+bevyquad-profiler = { path = "./profiler" }
+bevyquad-platformer = { path = "./physics-platformer" }
 
 # workaround to fix the examples
-# this allows to use macroquad-particles in examples without two versions of macroquad
+# this allows to use bevyquad-particles in examples without two versions of bevyquad
 [patch.crates-io]
-macroquad = { path = './' }
+bevyquad = { path = './' }
 
 #quad-snd = {path = '../quad-snd'}
 #miniquad = { path = '../miniquad' }

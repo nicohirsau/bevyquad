@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("Texture")]
+#[bevyquad::main("Texture")]
 async fn main() {
     let texture: Texture2D = load_texture("examples/chess.png").await.unwrap();
 

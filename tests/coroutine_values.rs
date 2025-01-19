@@ -1,6 +1,6 @@
-use macroquad::{experimental::coroutines::start_coroutine, telemetry, window::next_frame};
+use bevyquad::{experimental::coroutines::start_coroutine, telemetry, window::next_frame};
 
-#[macroquad::test]
+#[bevyquad::test]
 async fn coroutine_value() {
     let mut coroutine = start_coroutine(async move {
         next_frame().await;
@@ -17,9 +17,9 @@ async fn coroutine_value() {
     assert_eq!(coroutine.retrieve(), Some(1));
 }
 
-#[macroquad::test]
+#[bevyquad::test]
 async fn coroutine_memory() {
-    use macroquad::prelude::*;
+    use bevyquad::prelude::*;
 
     for _ in 0..20 {
         start_coroutine(async move {

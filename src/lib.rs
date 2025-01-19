@@ -1,7 +1,7 @@
 //!
-//! `macroquad` is a simple and easy to use game library for Rust programming language.
+//! `bevyquad` is a simple and easy to use game library for Rust programming language.
 //!
-//! `macroquad` attempts to avoid any rust-specific programming concepts like lifetimes/borrowing, making it very friendly for rust beginners.
+//! `bevyquad` attempts to avoid any rust-specific programming concepts like lifetimes/borrowing, making it very friendly for rust beginners.
 //!
 //! ## Supported platforms
 //!
@@ -19,9 +19,9 @@
 //! * Single command deploy for both WASM and Android [build instructions](https://github.com/not-fl3/miniquad/#building-examples)
 //! # Example
 //! ```no_run
-//! use macroquad::prelude::*;
+//! use bevyquad::prelude::*;
 //!
-//! #[macroquad::main("BasicShapes")]
+//! #[bevyquad::main("BasicShapes")]
 //! async fn main() {
 //!     loop {
 //!         clear_background(RED);
@@ -52,6 +52,7 @@ pub mod camera;
 pub mod color;
 pub mod file;
 pub mod input;
+pub mod layer_renderer;
 pub mod material;
 pub mod math;
 pub mod models;
@@ -72,7 +73,7 @@ mod error;
 
 pub use error::Error;
 
-/// Macroquad entry point.
+/// bevyquad entry point.
 ///
 /// ```skip
 /// #[main("Window name")]
@@ -88,7 +89,7 @@ pub use error::Error;
 ///         ..Default::default()
 ///     }
 /// }
-/// #[macroquad::main(window_conf)]
+/// #[bevyquad::main(window_conf)]
 /// async fn main() {
 /// }
 /// ```
@@ -107,11 +108,11 @@ pub use error::Error;
 /// ```skip
 /// #[derive(Debug)]
 /// enum GameError {
-///     FileError(macroquad::FileError),
+///     FileError(bevyquad::FileError),
 ///     SomeThirdPartyCrateError(somecrate::Error)
 /// }
-/// impl From<macroquad::file::FileError> for GameError {
-///     fn from(error: macroquad::file::FileError) -> GameError {
+/// impl From<bevyquad::file::FileError> for GameError {
+///     fn from(error: bevyquad::file::FileError) -> GameError {
 ///         GameError::FileError(error)
 ///     }
 /// }
@@ -121,15 +122,15 @@ pub use error::Error;
 ///     }
 /// }
 /// ```
-pub use macroquad_macro::main;
+pub use bevyquad_macro::main;
 
-/// #[macroquad::test] fn test() {}
+/// #[bevyquad::test] fn test() {}
 ///
-/// Very similar to macroquad::main
+/// Very similar to bevyquad::main
 /// Right now it will still spawn a window, just like ::main, therefore
-/// is not really useful for anything than developping macroquad itself
+/// is not really useful for anything than developping bevyquad itself
 #[doc(hidden)]
-pub use macroquad_macro::test;
+pub use bevyquad_macro::test;
 
 /// Cross platform random generator.
 pub mod rand {
@@ -469,7 +470,7 @@ impl Context {
 #[no_mangle]
 static mut CONTEXT: Option<Context> = None;
 
-// This is required for #[macroquad::test]
+// This is required for #[bevyquad::test]
 //
 // unfortunately #[cfg(test)] do not work with integration tests
 // so this module should be publicly available
@@ -802,10 +803,10 @@ pub mod conf {
         /// With miniquad_conf.platform.blocking_event_loop = true,
         /// next_frame().await will never finish and will wait forever with
         /// zero CPU usage.
-        /// update_on will tell macroquad when to proceed with the event loop.
+        /// update_on will tell bevyquad when to proceed with the event loop.
         pub update_on: Option<UpdateTrigger>,
         pub default_filter_mode: crate::FilterMode,
-        /// Macroquad performs automatic and static batching for each
+        /// bevyquad performs automatic and static batching for each
         /// draw_* call. For each draw call, it pre-allocate a huge cpu/gpu
         /// buffer to add vertices to. When it exceeds the buffer, it allocates the
         /// new one, marking the new draw call.

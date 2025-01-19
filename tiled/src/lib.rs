@@ -1,6 +1,6 @@
 use nanoserde::DeJson;
 
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
 use std::collections::HashMap;
 
@@ -335,7 +335,7 @@ impl<'a> Iterator for TilesIterator<'a> {
 
 /// Load Tiled tile map from given json string.
 /// "data" is a tiled json content.
-/// "textures" is a map from the name used in the json to macroquad texture.
+/// "textures" is a map from the name used in the json to bevyquad texture.
 /// "external_tilesets" is a map of tileset name to tileset json content.
 /// "external_tilesets" is used when in tiled the "source" field is used instead of embedded tileset.
 pub fn load_map(

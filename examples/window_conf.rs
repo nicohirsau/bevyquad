@@ -1,4 +1,4 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
 fn window_conf() -> Conf {
     Conf {
@@ -12,7 +12,7 @@ fn window_conf() -> Conf {
     }
 }
 
-#[macroquad::main(window_conf)]
+#[bevyquad::main(window_conf)]
 async fn main() {
     loop {
         clear_background(WHITE);

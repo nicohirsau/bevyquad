@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("Raw miniquad")]
+#[bevyquad::main("Raw miniquad")]
 async fn main() {
     let stage = {
         let InternalGlContext {
@@ -26,7 +26,7 @@ async fn main() {
         {
             let mut gl = unsafe { get_internal_gl() };
 
-            // Ensure that macroquad's shapes are not going to be lost
+            // Ensure that bevyquad's shapes are not going to be lost
             gl.flush();
 
             let t = get_time();

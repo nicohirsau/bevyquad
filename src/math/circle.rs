@@ -1,6 +1,8 @@
+use bevy_ecs::component::Component;
+
 use crate::math::{vec2, Rect, Vec2};
 
-#[derive(Clone, Copy, Debug, Default, PartialEq)]
+#[derive(Clone, Copy, Debug, Default, PartialEq, Component)]
 pub struct Circle {
     pub x: f32,
     pub y: f32,

@@ -49,7 +49,7 @@ pub fn main(attr: TokenStream, item: TokenStream) -> TokenStream {
         let attribute_name = format!("{}", group.next().unwrap());
 
         // skipping non-relevant attributes
-        if attribute_name == "macroquad" {
+        if attribute_name == "bevyquad" {
             let group = next_group(&mut group);
             let mut group = group.unwrap().stream().into_iter().peekable();
             let config_name = format!("{}", group.next().unwrap());
@@ -83,12 +83,12 @@ pub fn main(attr: TokenStream, item: TokenStream) -> TokenStream {
         assert_eq!(
             format!("{}", ident),
             "async",
-            "[macroquad::main] is allowed only for async functions"
+            "[bevyquad::main] is allowed only for async functions"
         );
 
         modified.extend(std::iter::once(TokenTree::Ident(ident)));
     } else {
-        panic!("[macroquad::main] is allowed only for async functions");
+        panic!("[bevyquad::main] is allowed only for async functions");
     }
 
     if let TokenTree::Ident(ident) = source.next().unwrap() {
@@ -96,7 +96,7 @@ pub fn main(attr: TokenStream, item: TokenStream) -> TokenStream {
 
         modified.extend(std::iter::once(TokenTree::Ident(ident)));
     } else {
-        panic!("[macroquad::main] is allowed only for functions");
+        panic!("[bevyquad::main] is allowed only for functions");
     }
 
     if let TokenTree::Ident(ident) = source.next().unwrap() {
@@ -107,7 +107,7 @@ pub fn main(attr: TokenStream, item: TokenStream) -> TokenStream {
             ident.span(),
         ))));
     } else {
-        panic!("[macroquad::main] expecting main function");
+        panic!("[bevyquad::main] expecting main function");
     }
 
     modified.extend(std::iter::once(source.next().unwrap()));
@@ -131,7 +131,7 @@ pub fn main(attr: TokenStream, item: TokenStream) -> TokenStream {
         None => panic!("No argument! Place function returned `Conf`"),
     };
 
-    let crate_name = crate_rename.unwrap_or_else(|| "macroquad".to_string());
+    let crate_name = crate_rename.unwrap_or_else(|| "bevyquad".to_string());
     let mut prelude: TokenStream = format!(
         "
     {pub_main} fn main() {{
@@ -166,8 +166,8 @@ pub fn main(attr: TokenStream, item: TokenStream) -> TokenStream {
 // maybe it is worth it to move reuse the code from main (it would be easy -
 // test is pretty much the same thing, but adding #[test] and not panicing when
 // function is not called "main")
-// But for now I am not really sure what exactly #[macroquad::test] should do,
-// so for easier modifications - it is decoupled from #[macroquad::main]
+// But for now I am not really sure what exactly #[bevyquad::test] should do,
+// so for easier modifications - it is decoupled from #[bevyquad::main]
 #[proc_macro_attribute]
 pub fn test(_attr: TokenStream, item: TokenStream) -> TokenStream {
     let mut modified = TokenStream::new();
@@ -185,7 +185,7 @@ pub fn test(_attr: TokenStream, item: TokenStream) -> TokenStream {
 
         modified.extend(std::iter::once(TokenTree::Ident(ident)));
     } else {
-        panic!("[macroquad::test] is allowed only for async functions");
+        panic!("[bevyquad::test] is allowed only for async functions");
     }
 
     if let TokenTree::Ident(ident) = source.next().unwrap() {
@@ -193,7 +193,7 @@ pub fn test(_attr: TokenStream, item: TokenStream) -> TokenStream {
 
         modified.extend(std::iter::once(TokenTree::Ident(ident)));
     } else {
-        panic!("[macroquad::test] is allowed only for functions");
+        panic!("[bevyquad::test] is allowed only for functions");
     }
 
     let test_name = if let TokenTree::Ident(ident) = source.next().unwrap() {
@@ -205,7 +205,7 @@ pub fn test(_attr: TokenStream, item: TokenStream) -> TokenStream {
         ))));
         test_name
     } else {
-        panic!("[macroquad::test] expecting main function");
+        panic!("[bevyquad::test] expecting main function");
     };
 
     modified.extend(std::iter::once(source.next().unwrap()));
@@ -217,12 +217,12 @@ pub fn test(_attr: TokenStream, item: TokenStream) -> TokenStream {
     #[test]
     fn {test_name}() {{
         let _lock = unsafe {{
-          let mutex = macroquad::test::ONCE.call_once(|| {{
-            macroquad::test::MUTEX = Some(std::sync::Mutex::new(()));
+          let mutex = bevyquad::test::ONCE.call_once(|| {{
+            bevyquad::test::MUTEX = Some(std::sync::Mutex::new(()));
           }});
-          macroquad::test::MUTEX.as_mut().unwrap().lock()
+          bevyquad::test::MUTEX.as_mut().unwrap().lock()
         }};
-        macroquad::Window::new(\"test\", {test_name}_async());
+        bevyquad::Window::new(\"test\", {test_name}_async());
     }}
     ",
         test_name = test_name,
@@ -234,7 +234,7 @@ pub fn test(_attr: TokenStream, item: TokenStream) -> TokenStream {
     prelude
 }
 
-/// Very experimental thing for macroquad::experimantal::scene
+/// Very experimental thing for bevyquad::experimantal::scene
 /// Maybe will go away in future versions
 #[doc(hidden)]
 #[proc_macro_derive(CapabilityTrait)]

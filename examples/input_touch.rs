@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("InputTouch")]
+#[bevyquad::main("InputTouch")]
 async fn main() {
     loop {
         clear_background(LIGHTGRAY);

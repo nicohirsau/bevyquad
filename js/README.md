@@ -1,4 +1,4 @@
-mq_js_bundle.js contains most common macroquad's dependencies JS code in one JS file.
+mq_js_bundle.js contains most common bevyquad's dependencies JS code in one JS file.
 
 `mq_js_bundle.js` was made by:
 

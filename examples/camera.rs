@@ -1,6 +1,6 @@
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-#[macroquad::main("Camera")]
+#[bevyquad::main("Camera")]
 async fn main() {
     loop {
         clear_background(LIGHTGRAY);

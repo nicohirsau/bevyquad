@@ -1,8 +1,8 @@
-use macroquad::{experimental::collections::storage, telemetry};
+use bevyquad::{experimental::collections::storage, telemetry};
 
-use macroquad::prelude::*;
+use bevyquad::prelude::*;
 
-use macroquad::ui::{hash, root_ui, widgets::Window, Ui};
+use bevyquad::ui::{hash, root_ui, widgets::Window, Ui};
 
 pub struct ProfilerState {
     fps_buffer: Vec<f32>,
@@ -89,7 +89,7 @@ fn profiler_window(ui: &mut Ui, state: &mut ProfilerState) {
         } else {
             Color::new(0.2, 0.2, 0.6, 1.0)
         };
-        let t = macroquad::math::clamp(frame.full_frame_time * 1000.0, 0.0, h);
+        let t = bevyquad::math::clamp(frame.full_frame_time * 1000.0, 0.0, h);
 
         canvas.line(
             vec2(pos.x + x + 2., pos.y + h - 1.0),
